@@ -1,0 +1,867 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "beHome API Service",
+      "version": "1.0.0"
+    },
+    "host": "gw.veep.tech",
+    "basePath": "/behome-api/v1",
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/admin-portal/login": {
+        "post": {
+          "operationId": "AdminLogin",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserApiResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbCredentialsLogin"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/health": {
+        "get": {
+          "operationId": "Liveness",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbLivenessResponse"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/ready": {
+        "get": {
+          "operationId": "Readiness",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbReadinessResponse"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        },
+        "post": {
+          "operationId": "ToggleReadiness",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbToggleReadinessResponse"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/change_password": {
+        "put": {
+          "operationId": "ChangePassword",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbSuccessResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbChangePasswordRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/confirm_otp": {
+        "post": {
+          "operationId": "OtpConfirm",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbOtpConfirmResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbOtpConfirmRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/forgot_password": {
+        "post": {
+          "operationId": "ResetPassword",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbSuccessResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbResetPasswordRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/login": {
+        "post": {
+          "operationId": "UserLogin",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserApiResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbCredentialsLogin"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/logout": {
+        "delete": {
+          "operationId": "Logout",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbSuccessResponse"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/me": {
+        "get": {
+          "summary": "Get user profile",
+          "operationId": "Me",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserApiResponse"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/refresh_token": {
+        "post": {
+          "operationId": "RefreshToken",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbTokenPair"
+              }
+            }
+          },
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/register": {
+        "post": {
+          "operationId": "Register",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserApiResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbSignupForm"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/request_otp": {
+        "post": {
+          "operationId": "SendOtp",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbSendOTPResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbSendOTPRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/social_auth": {
+        "post": {
+          "operationId": "SocialAuth",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserApiResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbSocialAuthRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/profile/{id}": {
+        "put": {
+          "operationId": "UpdateProfile",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbUserUpdateResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "type": "string",
+                "format": "int64"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbUserUpdateRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      },
+      "/user/verify_username": {
+        "post": {
+          "operationId": "VerifyUsername",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/pbVerifyUsernameResponse"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbVerifyUsernameRequest"
+              }
+            }
+          ],
+          "tags": [
+            "BeHomeAuth"
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "pbApiMetaData": {
+        "type": "object",
+        "properties": {
+          "flag": {
+            "type": "string",
+            "format": "int64"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ApiMetaData"
+      },
+      "pbAuthProvider": {
+        "type": "string",
+        "enum": [
+          "facebook",
+          "google"
+        ],
+        "default": "facebook"
+      },
+      "pbChangePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "input_type": {
+            "$ref": "#/definitions/pbInputType"
+          },
+          "current_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        },
+        "title": "ChangePasswordRequest"
+      },
+      "pbCredentialsLogin": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "input_type": {
+            "$ref": "#/definitions/pbInputType"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "title": "CredentialsLogin"
+      },
+      "pbInputType": {
+        "type": "string",
+        "enum": [
+          "phone",
+          "email"
+        ],
+        "default": "phone",
+        "description": "`input_type` only has two options: phone or email",
+        "title": "input_type"
+      },
+      "pbLivenessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "title": "LivenessResponse"
+      },
+      "pbOTPConfiguration": {
+        "type": "object",
+        "properties": {
+          "limit_sms": {
+            "type": "string",
+            "format": "int64"
+          },
+          "limit_call": {
+            "type": "string",
+            "format": "int64"
+          },
+          "count_down_sms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          "count_down_call": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          }
+        },
+        "title": "OTPConfiguration"
+      },
+      "pbOtpConfirmRequest": {
+        "type": "object",
+        "properties": {
+          "phone": {
+            "type": "string"
+          },
+          "otp": {
+            "type": "string"
+          }
+        },
+        "title": "OtpConfirmRequest"
+      },
+      "pbOtpConfirmResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "format": "boolean"
+          }
+        },
+        "title": "OtpConfirmResponse"
+      },
+      "pbReadinessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ReadinessResponse"
+      },
+      "pbResetPasswordRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "input_type": {
+            "$ref": "#/definitions/pbInputType"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "title": "ResetPasswordRequest"
+      },
+      "pbSendOTPData": {
+        "type": "object",
+        "properties": {
+          "total_sent_otp": {
+            "type": "string",
+            "format": "int64"
+          },
+          "otp_configuration": {
+            "$ref": "#/definitions/pbOTPConfiguration"
+          }
+        },
+        "title": "SendOTPData"
+      },
+      "pbSendOTPRequest": {
+        "type": "object",
+        "properties": {
+          "phone_no": {
+            "type": "string",
+            "description": "`phone_no` is user's phone number",
+            "title": "phone_no"
+          },
+          "country_code": {
+            "type": "string"
+          },
+          "type": {
+            "$ref": "#/definitions/pbType"
+          }
+        },
+        "title": "SendOTPRequest"
+      },
+      "pbSendOTPResponse": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/definitions/pbApiMetaData"
+          },
+          "data": {
+            "$ref": "#/definitions/pbSendOTPData"
+          }
+        },
+        "title": "SendOTPResponse"
+      },
+      "pbSignupForm": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "input_type": {
+            "$ref": "#/definitions/pbInputType"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "title": "SignupForm"
+      },
+      "pbSocialAccount": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "int64"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "string"
+          },
+          "profile_url": {
+            "type": "string"
+          }
+        },
+        "title": "SocialUser"
+      },
+      "pbSocialAuthRequest": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "auth_provider": {
+            "$ref": "#/definitions/pbAuthProvider"
+          }
+        },
+        "title": "SocialAuth"
+      },
+      "pbSuccessResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "format": "boolean"
+          }
+        }
+      },
+      "pbToggleReadinessResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "title": "ToggleReadinessResponse"
+      },
+      "pbTokenPair": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "refresh_token": {
+            "type": "string"
+          }
+        },
+        "title": "TokenPair"
+      },
+      "pbType": {
+        "type": "string",
+        "enum": [
+          "sms",
+          "call"
+        ],
+        "default": "sms",
+        "description": "`type` is kind of opt request type, just only two options: sms or call",
+        "title": "type"
+      },
+      "pbUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "identity_no": {
+            "type": "string"
+          },
+          "age": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "apartment": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "province_code": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "country_code": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "device_token": {
+            "type": "string"
+          },
+          "social_account": {
+            "$ref": "#/definitions/pbSocialAccount"
+          }
+        },
+        "title": "User"
+      },
+      "pbUserApiResponse": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/definitions/pbApiMetaData"
+          },
+          "data": {
+            "$ref": "#/definitions/pbUserData"
+          }
+        },
+        "title": "UserApiResponse"
+      },
+      "pbUserData": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/definitions/pbUser"
+          }
+        },
+        "title": "UserData"
+      },
+      "pbVerifyUsernameRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "`username` of user",
+            "title": "username"
+          },
+          "input_type": {
+            "$ref": "#/definitions/pbInputType"
+          }
+        },
+        "title": "VerifyUsernameRequest"
+      },
+      "pbVerifyUsernameResponse": {
+        "type": "object",
+        "properties": {
+          "exist": {
+            "type": "boolean",
+            "format": "boolean",
+            "description": "if user is existing on database =\u003e  exist = true",
+            "title": "exist"
+          }
+        },
+        "title": "VerifyUsernameResponse"
+      },
+       "pbUserUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "identity_no": {
+            "type": "string"
+          },
+          "age": {
+            "type": "string",
+            "format": "int64"
+          },
+          "address": {
+            "type": "string"
+          },
+          "apartment": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "province_code": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "country_code": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "device_token": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string",
+            "format": "int64",
+            "enum": [-1, 0, 1] 
+          }
+        }
+    },
+    "pbUserUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "$ref": "#/definitions/pbApiMetaData"
+          },
+          "data": {
+            "$ref": "#/definitions/pbUserUpdateData"
+          }
+        }
+    },
+    "pbUserUpdateData": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/pbUser"
+        }
+      }
+    },
+    },
+    "securityDefinitions": {
+      "BasicAuth": {
+        "type": "apiKey",
+        "name": "Authorizations",
+        "in": "header"
+      }
+    }
+  }
+  
