@@ -96,7 +96,7 @@
             "200": {
               "description": "A successful response.",
               "schema": {
-                "$ref": "#/definitions/pbSuccessResponse"
+                "$ref": "#/definitions/pbChangePasswordResponse"
               }
             }
           },
@@ -148,7 +148,7 @@
             "200": {
               "description": "A successful response.",
               "schema": {
-                "$ref": "#/definitions/pbSuccessResponse"
+                "$ref": "#/definitions/pbUserApiResponse"
               }
             }
           },
@@ -237,6 +237,16 @@
               }
             }
           },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/pbRefreshTokenRequest"
+              }
+            }
+          ],
           "tags": [
             "BeHomeAuth"
           ]
@@ -435,6 +445,15 @@
         },
         "title": "CredentialsLogin"
       },
+      "pbExist": {
+        "type": "object",
+        "properties": {
+          "exist": {
+            "type": "boolean",
+            "format": "boolean"
+          }
+        }
+      },
       "pbInputType": {
         "type": "string",
         "enum": [
@@ -500,9 +519,11 @@
       "pbOtpConfirmResponse": {
         "type": "object",
         "properties": {
-          "success": {
-            "type": "boolean",
-            "format": "boolean"
+          "meta": {
+            "$ref": "#/definitions/pbApiMetaData"
+          },
+          "data": {
+            "$ref": "#/definitions/pbSuccessResponse"
           }
         },
         "title": "OtpConfirmResponse"
@@ -748,6 +769,9 @@
           "access_token": {
             "type": "string"
           },
+          "refresh_token": {
+            "type": "string"
+          },
           "user": {
             "$ref": "#/definitions/pbUser"
           }
@@ -771,9 +795,11 @@
       "pbVerifyUsernameResponse": {
         "type": "object",
         "properties": {
-          "exist": {
-            "type": "boolean",
-            "format": "boolean",
+          "meta": {
+            "$ref": "#/definitions/pbApiMetaData"
+          },
+          "data": {
+            "$ref": "#/definitions/pbExist",
             "description": "if user is existing on database =\u003e  exist = true",
             "title": "exist"
           }
@@ -855,6 +881,16 @@
         }
       }
     },
+    "pbRefreshTokenRequest": {
+      "type": "object",
+      "properties": {
+        "refresh_token": {
+          "type": "string",
+          "title": "refresh_token"
+        }
+      },
+      "title": "RefreshTokenRequest"
+    }
     },
     "securityDefinitions": {
       "BasicAuth": {
