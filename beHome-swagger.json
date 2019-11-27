@@ -1,877 +1,3089 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "title": "beHome API Service",
-      "version": "1.0.0"
-    },
-    "host": "gw.veep.tech",
-    "basePath": "/behome-api/v1",
-    "schemes": [
-      "http",
-      "https"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/admin-portal/login": {
-        "post": {
-          "operationId": "AdminLogin",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
+  "swagger": "2.0",
+  "info": {
+    "title": "beHome API Service",
+    "version": "1.0.0"
+  },
+  "host": "gw.veep.tech",
+  "basePath": "/behome-api/v1",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/admin-portal/login": {
+      "post": {
+        "operationId": "AdminLogin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
             }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbCredentialsLogin"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
-        }
-      },
-      "/health": {
-        "get": {
-          "operationId": "Liveness",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbLivenessResponse"
-              }
-            }
-          },
-          "tags": [
-            "BeHomeAuth"
-          ]
-        }
-      },
-      "/ready": {
-        "get": {
-          "operationId": "Readiness",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbReadinessResponse"
-              }
-            }
-          },
-          "tags": [
-            "BeHomeAuth"
-          ]
+          }
         },
-        "post": {
-          "operationId": "ToggleReadiness",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbToggleReadinessResponse"
-              }
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCredentialsLogin"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "Liveness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbLivenessResponse"
+            }
+          }
+        },
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/ready": {
+      "get": {
+        "operationId": "Readiness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbReadinessResponse"
+            }
+          }
+        },
+        "tags": [
+          "BeHomeAuth"
+        ]
+      },
+      "post": {
+        "operationId": "ToggleReadiness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbToggleReadinessResponse"
+            }
+          }
+        },
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/change_password": {
+      "put": {
+        "operationId": "ChangePassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbChangePasswordResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbChangePasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/confirm_otp": {
+      "post": {
+        "operationId": "OtpConfirm",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbOtpConfirmResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbOtpConfirmRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/forgot_password": {
+      "post": {
+        "operationId": "ResetPassword",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbResetPasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/login": {
+      "post": {
+        "operationId": "UserLogin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCredentialsLogin"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/logout": {
+      "delete": {
+        "operationId": "Logout",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbLogoutResponse"
+            }
+          }
+        },
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/me": {
+      "get": {
+        "summary": "Get user profile",
+        "operationId": "Me",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
+            }
+          }
+        },
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/refresh_token": {
+      "post": {
+        "operationId": "RefreshToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbTokenPair"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbRefreshTokenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/register": {
+      "post": {
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbSignupForm"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/request_otp": {
+      "post": {
+        "operationId": "SendOtp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbSendOTPResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbSendOTPRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/social_auth": {
+      "post": {
+        "operationId": "SocialAuth",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserApiResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbSocialAuthRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/profile/{id}": {
+      "put": {
+        "operationId": "UpdateProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUserUpdateResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUserUpdateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/verify_username": {
+      "post": {
+        "operationId": "VerifyUsername",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbVerifyUsernameResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbVerifyUsernameRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/cities": {
+      "get": {
+        "operationId": "GetCities",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetCitiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
             }
           },
-          "tags": [
-            "BeHomeAuth"
-          ]
+          {
+            "name": "country_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "city_feature_off",
+              "city_feature_on"
+            ],
+            "default": "city_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "city_status_disable",
+              "city_status_enable"
+            ],
+            "default": "city_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteCityResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: City",
+        "operationId": "CreateCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateCityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateCityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/cities/{city_id}": {
+      "get": {
+        "operationId": "GetCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetCityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/countries": {
+      "get": {
+        "operationId": "GetCountries",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetCountriesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "country_feature_off",
+              "country_feature_on"
+            ],
+            "default": "country_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "country_status_disable",
+              "country_status_enable"
+            ],
+            "default": "country_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteCountryResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Country",
+        "operationId": "CreateCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateCountryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateCountryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCountryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCountryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/countries/{country_id}": {
+      "get": {
+        "operationId": "GetCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetCountryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "country_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/districts": {
+      "get": {
+        "operationId": "GetDistricts",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetDistrictsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "district_feature_off",
+              "district_feature_on"
+            ],
+            "default": "district_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "district_status_disable",
+              "district_status_enable"
+            ],
+            "default": "district_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteDistrictResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: District",
+        "operationId": "CreateDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateDistrictResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateDistrictRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateDistrictResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateDistrictRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/districts/{district_id}": {
+      "get": {
+        "operationId": "GetDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetDistrictResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "district_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/furnitures": {
+      "get": {
+        "operationId": "GetFurnitures",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetFurnituresResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "furniture_feature_off",
+              "furniture_feature_on"
+            ],
+            "default": "furniture_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "furniture_status_disable",
+              "furniture_status_enable"
+            ],
+            "default": "furniture_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteFurnitureResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Furniture",
+        "operationId": "CreateFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateFurnitureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateFurnitureRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateFurnitureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateFurnitureRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/furnitures/{furniture_id}": {
+      "get": {
+        "operationId": "GetFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetFurnitureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "furniture_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/images": {
+      "get": {
+        "operationId": "GetImages",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetImagesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteImageResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Image",
+        "operationId": "CreateImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateImageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateImageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/images/{image_id}": {
+      "get": {
+        "operationId": "GetImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/investors": {
+      "get": {
+        "operationId": "GetInvestors",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetInvestorsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "investor_feature_off",
+              "investor_feature_on"
+            ],
+            "default": "investor_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "investor_status_disable",
+              "investor_status_enable"
+            ],
+            "default": "investor_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteInvestorResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Investor",
+        "operationId": "CreateInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateInvestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateInvestorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateInvestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateInvestorRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/investors/{investor_id}": {
+      "get": {
+        "operationId": "GetInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetInvestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "investor_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/projects": {
+      "get": {
+        "operationId": "GetProjects",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetProjectsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "project_feature_off",
+              "project_feature_on"
+            ],
+            "default": "project_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "project_status_disable",
+              "project_status_enable"
+            ],
+            "default": "project_status_disable"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relations",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "acreage",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "number_of_flats",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "investor_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type_of_property_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "district_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ward_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "image_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteProjectResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Project",
+        "operationId": "CreateProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateProjectRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateProjectRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/projects/{project_id}": {
+      "get": {
+        "operationId": "GetProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/properties": {
+      "get": {
+        "operationId": "GetProperties",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetPropertiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relations",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "transaction_type",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "acreage",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "number_of_rooms",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "number_of_baths",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "number_of_floors",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "investor_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type_of_property_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "country_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "district_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ward_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "image_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeletePropertyResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Property",
+        "operationId": "CreateProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreatePropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreatePropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdatePropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdatePropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/properties/{property_id}": {
+      "get": {
+        "operationId": "GetProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/property_status": {
+      "put": {
+        "operationId": "UpdateStatusOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateStatusOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateStatusOfPropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/type_of_properties": {
+      "get": {
+        "operationId": "GetTypeOfProperties",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetTypeOfPropertiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "type_of_property_feature_off",
+              "type_of_property_feature_on"
+            ],
+            "default": "type_of_property_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "type_of_property_status_disable",
+              "type_of_property_status_enable"
+            ],
+            "default": "type_of_property_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteTypeOfPropertyResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: TypeOfProperty",
+        "operationId": "CreateTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateTypeOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateTypeOfPropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateTypeOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateTypeOfPropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/type_of_properties/{type_of_property_id}": {
+      "get": {
+        "operationId": "GetTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetTypeOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type_of_property_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/utilities": {
+      "get": {
+        "operationId": "GetUtilities",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetUtilitiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "icon",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "utility_feature_off",
+              "utility_feature_on"
+            ],
+            "default": "utility_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "utility_status_disable",
+              "utility_status_enable"
+            ],
+            "default": "utility_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteUtilityResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Utility",
+        "operationId": "CreateUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateUtilityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateUtilityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUtilityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUtilityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/utilities/{utility_id}": {
+      "get": {
+        "operationId": "GetUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetUtilityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "utility_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/version": {
+      "get": {
+        "operationId": "Version",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbVersionResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/wards": {
+      "get": {
+        "operationId": "GetWards",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetWardsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "city_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "district_id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "ward_feature_off",
+              "ward_feature_on"
+            ],
+            "default": "ward_feature_off"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "ward_status_disable",
+              "ward_status_enable"
+            ],
+            "default": "ward_status_disable"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteWardResponse"
+            }
+          }
+        },
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Ward",
+        "operationId": "CreateWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateWardResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateWardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateWardResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateWardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/wards/{ward_id}": {
+      "get": {
+        "operationId": "GetWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetWardResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ward_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "pbApiMetaData": {
+      "type": "object",
+      "properties": {
+        "flag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
         }
       },
-      "/user/change_password": {
-        "put": {
-          "operationId": "ChangePassword",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbChangePasswordResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbChangePasswordRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "ApiMetaData"
+    },
+    "pbAuthProvider": {
+      "type": "string",
+      "enum": [
+        "facebook",
+        "google"
+      ],
+      "default": "facebook"
+    },
+    "pbChangePasswordRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "input_type": {
+          "$ref": "#/definitions/pbInputType"
+        },
+        "current_password": {
+          "type": "string"
+        },
+        "new_password": {
+          "type": "string"
         }
       },
-      "/user/confirm_otp": {
-        "post": {
-          "operationId": "OtpConfirm",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbOtpConfirmResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbOtpConfirmRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "ChangePasswordRequest"
+    },
+    "pbChangePasswordResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbSuccessResponse"
+        }
+      }
+    },
+    "pbCredentialsLogin": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "input_type": {
+          "$ref": "#/definitions/pbInputType"
+        },
+        "password": {
+          "type": "string"
         }
       },
-      "/user/forgot_password": {
-        "post": {
-          "operationId": "ResetPassword",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbResetPasswordRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "CredentialsLogin"
+    },
+    "pbExist": {
+      "type": "object",
+      "properties": {
+        "exist": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "pbInputType": {
+      "type": "string",
+      "enum": [
+        "phone",
+        "email"
+      ],
+      "default": "phone",
+      "description": "`input_type` only has two options: phone or email",
+      "title": "input_type"
+    },
+    "pbLivenessResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
         }
       },
-      "/user/login": {
-        "post": {
-          "operationId": "UserLogin",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbCredentialsLogin"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "LivenessResponse"
+    },
+    "pbOTPConfiguration": {
+      "type": "object",
+      "properties": {
+        "limit_sms": {
+          "type": "string",
+          "format": "int64"
+        },
+        "limit_call": {
+          "type": "string",
+          "format": "int64"
+        },
+        "count_down_sms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "count_down_call": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
         }
       },
-      "/user/logout": {
-        "delete": {
-          "operationId": "Logout",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbSuccessResponse"
-              }
-            }
-          },
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "OTPConfiguration"
+    },
+    "pbLogoutResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbSuccessResponse"
+        }
+      }
+    },
+    "pbOtpConfirmRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "otp": {
+          "type": "string"
         }
       },
-      "/user/me": {
-        "get": {
-          "summary": "Get user profile",
-          "operationId": "Me",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
-            }
-          },
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "OtpConfirmRequest"
+    },
+    "pbOtpConfirmResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbSuccessResponse"
         }
       },
-      "/user/refresh_token": {
-        "post": {
-          "operationId": "RefreshToken",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbTokenPair"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbRefreshTokenRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "OtpConfirmResponse"
+    },
+    "pbReadinessResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
         }
       },
-      "/user/register": {
-        "post": {
-          "operationId": "Register",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbSignupForm"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "ReadinessResponse"
+    },
+    "pbResetPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "input_type": {
+          "$ref": "#/definitions/pbInputType"
+        },
+        "password": {
+          "type": "string"
         }
       },
-      "/user/request_otp": {
-        "post": {
-          "operationId": "SendOtp",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbSendOTPResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbSendOTPRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "ResetPasswordRequest"
+    },
+    "pbSendOTPData": {
+      "type": "object",
+      "properties": {
+        "total_sent_otp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "otp_configuration": {
+          "$ref": "#/definitions/pbOTPConfiguration"
         }
       },
-      "/user/social_auth": {
-        "post": {
-          "operationId": "SocialAuth",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserApiResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbSocialAuthRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "SendOTPData"
+    },
+    "pbSendOTPRequest": {
+      "type": "object",
+      "properties": {
+        "phone_no": {
+          "type": "string",
+          "description": "`phone_no` is user's phone number",
+          "title": "phone_no"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/pbType"
         }
       },
-      "/user/profile/{id}": {
-        "put": {
-          "operationId": "UpdateProfile",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbUserUpdateResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "type": "string",
-                "format": "int64"
-            },
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbUserUpdateRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
-          ]
+      "title": "SendOTPRequest"
+    },
+    "pbSendOTPResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbSendOTPData"
         }
       },
-      "/user/verify_username": {
-        "post": {
-          "operationId": "VerifyUsername",
-          "responses": {
-            "200": {
-              "description": "A successful response.",
-              "schema": {
-                "$ref": "#/definitions/pbVerifyUsernameResponse"
-              }
-            }
-          },
-          "parameters": [
-            {
-              "name": "body",
-              "in": "body",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/pbVerifyUsernameRequest"
-              }
-            }
-          ],
-          "tags": [
-            "BeHomeAuth"
+      "title": "SendOTPResponse"
+    },
+    "pbSignupForm": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "input_type": {
+          "$ref": "#/definitions/pbInputType"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "SignupForm"
+    },
+    "pbSocialAccount": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "profile_url": {
+          "type": "string"
+        }
+      },
+      "title": "SocialUser"
+    },
+    "pbSocialAuthRequest": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "auth_provider": {
+          "$ref": "#/definitions/pbAuthProvider"
+        }
+      },
+      "title": "SocialAuth"
+    },
+    "pbSuccessResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "pbToggleReadinessResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "ToggleReadinessResponse"
+    },
+    "pbTokenPair": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        }
+      },
+      "title": "TokenPair"
+    },
+    "pbType": {
+      "type": "string",
+      "enum": [
+        "sms",
+        "call"
+      ],
+      "default": "sms",
+      "description": "`type` is kind of opt request type, just only two options: sms or call",
+      "title": "type"
+    },
+    "pbUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "identity_no": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "apartment": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "province_code": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "device_token": {
+          "type": "string"
+        },
+        "social_account": {
+          "$ref": "#/definitions/pbSocialAccount"
+        }
+      },
+      "title": "User"
+    },
+    "pbUserApiResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUserData"
+        }
+      },
+      "title": "UserApiResponse"
+    },
+    "pbUserData": {
+      "type": "object",
+      "properties": {
+        "access_token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/pbUser"
+        }
+      },
+      "title": "UserData"
+    },
+    "pbVerifyUsernameRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "description": "`username` of user",
+          "title": "username"
+        },
+        "input_type": {
+          "$ref": "#/definitions/pbInputType"
+        }
+      },
+      "title": "VerifyUsernameRequest"
+    },
+    "pbVerifyUsernameResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbExist",
+          "description": "if user is existing on database =\u003e  exist = true",
+          "title": "exist"
+        }
+      },
+      "title": "VerifyUsernameResponse"
+    },
+    "pbUserUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "identity_no": {
+          "type": "string"
+        },
+        "age": {
+          "type": "string",
+          "format": "int64"
+        },
+        "address": {
+          "type": "string"
+        },
+        "apartment": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "province_code": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "country_code": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "device_token": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string",
+          "format": "int64",
+          "enum": [
+            -1,
+            0,
+            1
           ]
         }
       }
     },
-    "definitions": {
-      "pbApiMetaData": {
-        "type": "object",
-        "properties": {
-          "flag": {
-            "type": "string",
-            "format": "int64"
-          },
-          "message": {
-            "type": "string"
-          }
-        },
-        "title": "ApiMetaData"
-      },
-      "pbAuthProvider": {
-        "type": "string",
-        "enum": [
-          "facebook",
-          "google"
-        ],
-        "default": "facebook"
-      },
-      "pbChangePasswordRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "input_type": {
-            "$ref": "#/definitions/pbInputType"
-          },
-          "current_password": {
-            "type": "string"
-          },
-          "new_password": {
-            "type": "string"
-          }
-        },
-        "title": "ChangePasswordRequest"
-      },
-      "pbCredentialsLogin": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "input_type": {
-            "$ref": "#/definitions/pbInputType"
-          },
-          "password": {
-            "type": "string"
-          }
-        },
-        "title": "CredentialsLogin"
-      },
-      "pbExist": {
-        "type": "object",
-        "properties": {
-          "exist": {
-            "type": "boolean",
-            "format": "boolean"
-          }
-        }
-      },
-      "pbInputType": {
-        "type": "string",
-        "enum": [
-          "phone",
-          "email"
-        ],
-        "default": "phone",
-        "description": "`input_type` only has two options: phone or email",
-        "title": "input_type"
-      },
-      "pbLivenessResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          },
-          "url": {
-            "type": "string"
-          }
-        },
-        "title": "LivenessResponse"
-      },
-      "pbOTPConfiguration": {
-        "type": "object",
-        "properties": {
-          "limit_sms": {
-            "type": "string",
-            "format": "int64"
-          },
-          "limit_call": {
-            "type": "string",
-            "format": "int64"
-          },
-          "count_down_sms": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "int64"
-            }
-          },
-          "count_down_call": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "int64"
-            }
-          }
-        },
-        "title": "OTPConfiguration"
-      },
-      "pbOtpConfirmRequest": {
-        "type": "object",
-        "properties": {
-          "phone": {
-            "type": "string"
-          },
-          "otp": {
-            "type": "string"
-          }
-        },
-        "title": "OtpConfirmRequest"
-      },
-      "pbOtpConfirmResponse": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/definitions/pbApiMetaData"
-          },
-          "data": {
-            "$ref": "#/definitions/pbSuccessResponse"
-          }
-        },
-        "title": "OtpConfirmResponse"
-      },
-      "pbReadinessResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        },
-        "title": "ReadinessResponse"
-      },
-      "pbResetPasswordRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "input_type": {
-            "$ref": "#/definitions/pbInputType"
-          },
-          "password": {
-            "type": "string"
-          }
-        },
-        "title": "ResetPasswordRequest"
-      },
-      "pbSendOTPData": {
-        "type": "object",
-        "properties": {
-          "total_sent_otp": {
-            "type": "string",
-            "format": "int64"
-          },
-          "otp_configuration": {
-            "$ref": "#/definitions/pbOTPConfiguration"
-          }
-        },
-        "title": "SendOTPData"
-      },
-      "pbSendOTPRequest": {
-        "type": "object",
-        "properties": {
-          "phone_no": {
-            "type": "string",
-            "description": "`phone_no` is user's phone number",
-            "title": "phone_no"
-          },
-          "country_code": {
-            "type": "string"
-          },
-          "type": {
-            "$ref": "#/definitions/pbType"
-          }
-        },
-        "title": "SendOTPRequest"
-      },
-      "pbSendOTPResponse": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/definitions/pbApiMetaData"
-          },
-          "data": {
-            "$ref": "#/definitions/pbSendOTPData"
-          }
-        },
-        "title": "SendOTPResponse"
-      },
-      "pbSignupForm": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "input_type": {
-            "$ref": "#/definitions/pbInputType"
-          },
-          "password": {
-            "type": "string"
-          }
-        },
-        "title": "SignupForm"
-      },
-      "pbSocialAccount": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "int64"
-          },
-          "provider": {
-            "type": "string"
-          },
-          "uid": {
-            "type": "string"
-          },
-          "profile_url": {
-            "type": "string"
-          }
-        },
-        "title": "SocialUser"
-      },
-      "pbSocialAuthRequest": {
-        "type": "object",
-        "properties": {
-          "access_token": {
-            "type": "string"
-          },
-          "auth_provider": {
-            "$ref": "#/definitions/pbAuthProvider"
-          }
-        },
-        "title": "SocialAuth"
-      },
-      "pbSuccessResponse": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "format": "boolean"
-          }
-        }
-      },
-      "pbToggleReadinessResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string"
-          }
-        },
-        "title": "ToggleReadinessResponse"
-      },
-      "pbTokenPair": {
-        "type": "object",
-        "properties": {
-          "access_token": {
-            "type": "string"
-          },
-          "refresh_token": {
-            "type": "string"
-          }
-        },
-        "title": "TokenPair"
-      },
-      "pbType": {
-        "type": "string",
-        "enum": [
-          "sms",
-          "call"
-        ],
-        "default": "sms",
-        "description": "`type` is kind of opt request type, just only two options: sms or call",
-        "title": "type"
-      },
-      "pbUser": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "first_name": {
-            "type": "string"
-          },
-          "last_name": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "role": {
-            "type": "string"
-          },
-          "identity_no": {
-            "type": "string"
-          },
-          "age": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "apartment": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "province_code": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "country_code": {
-            "type": "string"
-          },
-          "avatar": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string"
-          },
-          "updated_at": {
-            "type": "string"
-          },
-          "enabled": {
-            "type": "boolean",
-            "format": "boolean"
-          },
-          "device_token": {
-            "type": "string"
-          },
-          "social_account": {
-            "$ref": "#/definitions/pbSocialAccount"
-          }
-        },
-        "title": "User"
-      },
-      "pbUserApiResponse": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/definitions/pbApiMetaData"
-          },
-          "data": {
-            "$ref": "#/definitions/pbUserData"
-          }
-        },
-        "title": "UserApiResponse"
-      },
-      "pbUserData": {
-        "type": "object",
-        "properties": {
-          "access_token": {
-            "type": "string"
-          },
-          "refresh_token": {
-            "type": "string"
-          },
-          "user": {
-            "$ref": "#/definitions/pbUser"
-          }
-        },
-        "title": "UserData"
-      },
-      "pbVerifyUsernameRequest": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string",
-            "description": "`username` of user",
-            "title": "username"
-          },
-          "input_type": {
-            "$ref": "#/definitions/pbInputType"
-          }
-        },
-        "title": "VerifyUsernameRequest"
-      },
-      "pbVerifyUsernameResponse": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/definitions/pbApiMetaData"
-          },
-          "data": {
-            "$ref": "#/definitions/pbExist",
-            "description": "if user is existing on database =\u003e  exist = true",
-            "title": "exist"
-          }
-        },
-        "title": "VerifyUsernameResponse"
-      },
-       "pbUserUpdateRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "first_name": {
-            "type": "string"
-          },
-          "last_name": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "identity_no": {
-            "type": "string"
-          },
-          "age": {
-            "type": "string",
-            "format": "int64"
-          },
-          "address": {
-            "type": "string"
-          },
-          "apartment": {
-            "type": "string"
-          },
-          "city": {
-            "type": "string"
-          },
-          "province_code": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "country_code": {
-            "type": "string"
-          },
-          "avatar": {
-            "type": "string"
-          },
-          "device_token": {
-            "type": "string"
-          },
-          "gender": {
-            "type": "string",
-            "format": "int64",
-            "enum": [-1, 0, 1] 
-          }
-        }
-    },
     "pbUserUpdateResponse": {
-        "type": "object",
-        "properties": {
-          "meta": {
-            "$ref": "#/definitions/pbApiMetaData"
-          },
-          "data": {
-            "$ref": "#/definitions/pbUserUpdateData"
-          }
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbApiMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUserUpdateData"
         }
+      }
     },
     "pbUserUpdateData": {
       "type": "object",
@@ -890,14 +3102,2080 @@
         }
       },
       "title": "RefreshTokenRequest"
-    }
     },
-    "securityDefinitions": {
-      "BasicAuth": {
-        "type": "apiKey",
-        "name": "Authorizations",
-        "in": "header"
+    "pbCitiesData": {
+      "type": "object",
+      "properties": {
+        "cities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbCity"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbCity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbCityFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbCityStatus"
+        }
+      },
+      "title": "City"
+    },
+    "pbCityData": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "$ref": "#/definitions/pbCity"
+        }
+      }
+    },
+    "pbCityFeature": {
+      "type": "string",
+      "enum": [
+        "city_feature_off",
+        "city_feature_on"
+      ],
+      "default": "city_feature_off",
+      "description": "`city_feature` only has two options: on or off",
+      "title": "city_feature"
+    },
+    "pbCityInput": {
+      "type": "object",
+      "properties": {
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbCityFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbCityStatus"
+        }
+      }
+    },
+    "pbCityStatus": {
+      "type": "string",
+      "enum": [
+        "city_status_disable",
+        "city_status_enable"
+      ],
+      "default": "city_status_disable",
+      "description": "`city_status` only has two options: enable or disable",
+      "title": "city_status"
+    },
+    "pbCountriesData": {
+      "type": "object",
+      "properties": {
+        "countries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbCountry"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbCountry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbCountryFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbCountryStatus"
+        }
+      },
+      "title": "Country"
+    },
+    "pbCountryData": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "$ref": "#/definitions/pbCountry"
+        }
+      }
+    },
+    "pbCountryFeature": {
+      "type": "string",
+      "enum": [
+        "country_feature_off",
+        "country_feature_on"
+      ],
+      "default": "country_feature_off",
+      "description": "`country_feature` only has two options: on or off",
+      "title": "country_feature"
+    },
+    "pbCountryInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbCountryFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbCountryStatus"
+        }
+      }
+    },
+    "pbCountryStatus": {
+      "type": "string",
+      "enum": [
+        "country_status_disable",
+        "country_status_enable"
+      ],
+      "default": "country_status_disable",
+      "description": "`country_status` only has two options: enable or disable",
+      "title": "country_status"
+    },
+    "pbCreateCityRequest": {
+      "type": "object",
+      "properties": {
+        "city_input": {
+          "$ref": "#/definitions/pbCityInput"
+        }
+      }
+    },
+    "pbCreateCityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCityData"
+        }
+      }
+    },
+    "pbCreateCountryRequest": {
+      "type": "object",
+      "properties": {
+        "country_input": {
+          "$ref": "#/definitions/pbCountryInput"
+        }
+      }
+    },
+    "pbCreateCountryResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCountryData"
+        }
+      }
+    },
+    "pbCreateDistrictRequest": {
+      "type": "object",
+      "properties": {
+        "district_input": {
+          "$ref": "#/definitions/pbDistrictInput"
+        }
+      }
+    },
+    "pbCreateDistrictResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbDistrictData"
+        }
+      }
+    },
+    "pbCreateFurnitureRequest": {
+      "type": "object",
+      "properties": {
+        "furniture_input": {
+          "$ref": "#/definitions/pbFurnitureInput"
+        }
+      }
+    },
+    "pbCreateFurnitureResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbFurnitureData"
+        }
+      }
+    },
+    "pbCreateImageRequest": {
+      "type": "object",
+      "properties": {
+        "image_input": {
+          "$ref": "#/definitions/pbImageInput"
+        }
+      }
+    },
+    "pbCreateImageResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbImageData"
+        }
+      }
+    },
+    "pbCreateInvestorRequest": {
+      "type": "object",
+      "properties": {
+        "investor_input": {
+          "$ref": "#/definitions/pbInvestorInput"
+        }
+      }
+    },
+    "pbCreateInvestorResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbInvestorData"
+        }
+      }
+    },
+    "pbCreateProjectRequest": {
+      "type": "object",
+      "properties": {
+        "project_input": {
+          "$ref": "#/definitions/pbProjectInput"
+        }
+      }
+    },
+    "pbCreateProjectResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbProjectData"
+        }
+      }
+    },
+    "pbCreatePropertyRequest": {
+      "type": "object",
+      "properties": {
+        "property_input": {
+          "$ref": "#/definitions/pbPropertyInput"
+        }
+      }
+    },
+    "pbCreatePropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertyData"
+        }
+      }
+    },
+    "pbCreateTypeOfPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "type_of_property_input": {
+          "$ref": "#/definitions/pbTypeOfPropertyInput"
+        }
+      }
+    },
+    "pbCreateTypeOfPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbTypeOfPropertyData"
+        }
+      }
+    },
+    "pbCreateUtilityRequest": {
+      "type": "object",
+      "properties": {
+        "utility_input": {
+          "$ref": "#/definitions/pbUtilityInput"
+        }
+      }
+    },
+    "pbCreateUtilityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUtilityData"
+        }
+      }
+    },
+    "pbCreateWardRequest": {
+      "type": "object",
+      "properties": {
+        "ward_input": {
+          "$ref": "#/definitions/pbWardInput"
+        }
+      }
+    },
+    "pbCreateWardResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbWardData"
+        }
+      }
+    },
+    "pbDeleteCityResponse": {
+      "type": "object"
+    },
+    "pbDeleteCountryResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
+    "pbDeleteDistrictResponse": {
+      "type": "object"
+    },
+    "pbDeleteFurnitureResponse": {
+      "type": "object"
+    },
+    "pbDeleteImageResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
+    "pbDeleteInvestorResponse": {
+      "type": "object"
+    },
+    "pbDeleteProjectResponse": {
+      "type": "object"
+    },
+    "pbDeletePropertyResponse": {
+      "type": "object"
+    },
+    "pbDeleteTypeOfPropertyResponse": {
+      "type": "object"
+    },
+    "pbDeleteUtilityResponse": {
+      "type": "object"
+    },
+    "pbDeleteWardResponse": {
+      "type": "object"
+    },
+    "pbDistrict": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbDistrictFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbDistrictStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbDistrictData": {
+      "type": "object",
+      "properties": {
+        "district": {
+          "$ref": "#/definitions/pbDistrict"
+        }
+      }
+    },
+    "pbDistrictFeature": {
+      "type": "string",
+      "enum": [
+        "district_feature_off",
+        "district_feature_on"
+      ],
+      "default": "district_feature_off",
+      "description": "`district_feature` only has two options: on or off",
+      "title": "district_feature"
+    },
+    "pbDistrictInput": {
+      "type": "object",
+      "properties": {
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbDistrictFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbDistrictStatus"
+        }
+      }
+    },
+    "pbDistrictStatus": {
+      "type": "string",
+      "enum": [
+        "district_status_disable",
+        "district_status_enable"
+      ],
+      "default": "district_status_disable",
+      "description": "`district_status` only has two options: enable or disable",
+      "title": "district_status"
+    },
+    "pbDistrictsData": {
+      "type": "object",
+      "properties": {
+        "districts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbDistrict"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbFurniture": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbFurnitureFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbFurnitureStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbFurnitureData": {
+      "type": "object",
+      "properties": {
+        "furniture": {
+          "$ref": "#/definitions/pbFurniture"
+        }
+      }
+    },
+    "pbFurnitureFeature": {
+      "type": "string",
+      "enum": [
+        "furniture_feature_off",
+        "furniture_feature_on"
+      ],
+      "default": "furniture_feature_off",
+      "description": "`furniture_feature` only has two options: on or off",
+      "title": "furniture_feature"
+    },
+    "pbFurnitureInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbFurnitureFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbFurnitureStatus"
+        }
+      }
+    },
+    "pbFurnitureStatus": {
+      "type": "string",
+      "enum": [
+        "furniture_status_disable",
+        "furniture_status_enable"
+      ],
+      "default": "furniture_status_disable",
+      "description": "`furniture_status` only has two options: enable or disable",
+      "title": "furniture_status"
+    },
+    "pbFurnituresData": {
+      "type": "object",
+      "properties": {
+        "furnitures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbFurniture"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbGetCitiesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCitiesData"
+        }
+      }
+    },
+    "pbGetCityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCityData"
+        }
+      }
+    },
+    "pbGetCountriesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCountriesData"
+        }
+      }
+    },
+    "pbGetCountryResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCountryData"
+        }
+      }
+    },
+    "pbGetDistrictResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbDistrictData"
+        }
+      }
+    },
+    "pbGetDistrictsResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbDistrictsData"
+        }
+      }
+    },
+    "pbGetFurnitureResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbFurnitureData"
+        }
+      }
+    },
+    "pbGetFurnituresResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbFurnituresData"
+        }
+      }
+    },
+    "pbGetImageResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbImageData"
+        }
+      }
+    },
+    "pbGetImagesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbImagesData"
+        }
+      }
+    },
+    "pbGetInvestorResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbInvestorData"
+        }
+      }
+    },
+    "pbGetInvestorsResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbInvestorsData"
+        }
+      }
+    },
+    "pbGetProjectResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbProjectData"
+        }
+      }
+    },
+    "pbGetProjectsResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbProjectsData"
+        }
+      }
+    },
+    "pbGetPropertiesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertiesData"
+        }
+      }
+    },
+    "pbGetPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertyData"
+        }
+      }
+    },
+    "pbGetTypeOfPropertiesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbTypeOfPropertiesData"
+        }
+      }
+    },
+    "pbGetTypeOfPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbTypeOfPropertyData"
+        }
+      }
+    },
+    "pbGetUtilitiesResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUtilitiesData"
+        }
+      }
+    },
+    "pbGetUtilityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUtilityData"
+        }
+      }
+    },
+    "pbGetWardResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbWardData"
+        }
+      }
+    },
+    "pbGetWardsResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbWardsData"
+        }
+      }
+    },
+    "pbImage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "object": {
+          "type": "string"
+        },
+        "object_id": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImageDetail"
+          }
+        }
+      },
+      "title": "Image"
+    },
+    "pbImageData": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/pbImage"
+        }
+      }
+    },
+    "pbImageDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "size": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "pbImageDetailInput": {
+      "type": "object",
+      "properties": {
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "size": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "pbImageInput": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImageDetailInput"
+          }
+        }
+      }
+    },
+    "pbImagesData": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImage"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbInvestor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbInvestorFeature"
+        },
+        "status": {
+          "$ref": "#/definitions/pbInvestorStatus"
+        }
+      },
+      "title": "Investor"
+    },
+    "pbInvestorData": {
+      "type": "object",
+      "properties": {
+        "investor": {
+          "$ref": "#/definitions/pbInvestor"
+        }
+      }
+    },
+    "pbInvestorFeature": {
+      "type": "string",
+      "enum": [
+        "investor_feature_off",
+        "investor_feature_on"
+      ],
+      "default": "investor_feature_off",
+      "description": "`investor_feature` only has two options: on or off",
+      "title": "investor_feature"
+    },
+    "pbInvestorInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbInvestorFeature"
+        },
+        "status": {
+          "$ref": "#/definitions/pbInvestorStatus"
+        }
+      }
+    },
+    "pbInvestorStatus": {
+      "type": "string",
+      "enum": [
+        "investor_status_disable",
+        "investor_status_enable"
+      ],
+      "default": "investor_status_disable",
+      "description": "`investor_status` only has two options: enable or disable",
+      "title": "investor_status"
+    },
+    "pbInvestorsData": {
+      "type": "object",
+      "properties": {
+        "investors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbInvestor"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbMetaData": {
+      "type": "object",
+      "properties": {
+        "flag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "pbProject": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_flats": {
+          "type": "string",
+          "format": "int64"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbProjectFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbProjectStatus"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "investor": {
+          "$ref": "#/definitions/pbInvestor",
+          "title": "User user = 30;"
+        },
+        "type_of_property": {
+          "$ref": "#/definitions/pbTypeOfProperty"
+        },
+        "city": {
+          "$ref": "#/definitions/pbCity"
+        },
+        "district": {
+          "$ref": "#/definitions/pbDistrict"
+        },
+        "ward": {
+          "$ref": "#/definitions/pbWard"
+        },
+        "image": {
+          "$ref": "#/definitions/pbImage"
+        }
+      },
+      "title": "Project"
+    },
+    "pbProjectData": {
+      "type": "object",
+      "properties": {
+        "project": {
+          "$ref": "#/definitions/pbProject"
+        }
+      }
+    },
+    "pbProjectFeature": {
+      "type": "string",
+      "enum": [
+        "project_feature_off",
+        "project_feature_on"
+      ],
+      "default": "project_feature_off",
+      "description": "`project_feature` only has two options: on or off",
+      "title": "project_feature"
+    },
+    "pbProjectInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_flats": {
+          "type": "string",
+          "format": "int64"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbProjectFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbProjectStatus"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbProjectStatus": {
+      "type": "string",
+      "enum": [
+        "project_status_disable",
+        "project_status_enable"
+      ],
+      "default": "project_status_disable",
+      "description": "`project_status` only has two options: enable or disable",
+      "title": "project_status"
+    },
+    "pbProjectsData": {
+      "type": "object",
+      "properties": {
+        "projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbProject"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbPropertiesData": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbProperty"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_rooms": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_baths": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_floors": {
+          "type": "string",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "project_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "feature": {
+          "type": "string",
+          "format": "int64"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "investor": {
+          "$ref": "#/definitions/pbInvestor",
+          "title": "User user = 40;"
+        },
+        "type_of_property": {
+          "$ref": "#/definitions/pbTypeOfProperty"
+        },
+        "project": {
+          "$ref": "#/definitions/pbProject"
+        },
+        "country": {
+          "$ref": "#/definitions/pbCountry"
+        },
+        "city": {
+          "$ref": "#/definitions/pbCity"
+        },
+        "district": {
+          "$ref": "#/definitions/pbDistrict"
+        },
+        "ward": {
+          "$ref": "#/definitions/pbWard"
+        },
+        "image": {
+          "$ref": "#/definitions/pbImage"
+        },
+        "utilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbUtility"
+          }
+        },
+        "furnitures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbFurniture"
+          }
+        }
+      },
+      "title": "Property"
+    },
+    "pbPropertyData": {
+      "type": "object",
+      "properties": {
+        "property": {
+          "$ref": "#/definitions/pbProperty"
+        }
+      }
+    },
+    "pbPropertyInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_rooms": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_baths": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_floors": {
+          "type": "string",
+          "format": "int64"
+        },
+        "utilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "furnitures": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "project_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "feature": {
+          "type": "string",
+          "format": "int64"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "pbTypeOfPropertiesData": {
+      "type": "object",
+      "properties": {
+        "type_of_properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbTypeOfProperty"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbTypeOfProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbTypeOfPropertyFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbTypeOfPropertyStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbTypeOfPropertyData": {
+      "type": "object",
+      "properties": {
+        "type_of_property": {
+          "$ref": "#/definitions/pbTypeOfProperty"
+        }
+      }
+    },
+    "pbTypeOfPropertyFeature": {
+      "type": "string",
+      "enum": [
+        "type_of_property_feature_off",
+        "type_of_property_feature_on"
+      ],
+      "default": "type_of_property_feature_off",
+      "description": "`type_of_property_feature` only has two options: on or off",
+      "title": "type_of_property_feature"
+    },
+    "pbTypeOfPropertyInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbTypeOfPropertyFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbTypeOfPropertyStatus"
+        }
+      }
+    },
+    "pbTypeOfPropertyStatus": {
+      "type": "string",
+      "enum": [
+        "type_of_property_status_disable",
+        "type_of_property_status_enable"
+      ],
+      "default": "type_of_property_status_disable",
+      "description": "`type_of_property_status` only has two options: enable or disable",
+      "title": "type_of_property_status"
+    },
+    "pbUpdateCityRequest": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "$ref": "#/definitions/pbCity"
+        }
+      }
+    },
+    "pbUpdateCityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCityData"
+        }
+      }
+    },
+    "pbUpdateCountryRequest": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "$ref": "#/definitions/pbCountry"
+        }
+      }
+    },
+    "pbUpdateCountryResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbCountryData"
+        }
+      }
+    },
+    "pbUpdateDistrictRequest": {
+      "type": "object",
+      "properties": {
+        "district": {
+          "$ref": "#/definitions/pbDistrict"
+        }
+      }
+    },
+    "pbUpdateDistrictResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbDistrictData"
+        }
+      }
+    },
+    "pbUpdateFurnitureRequest": {
+      "type": "object",
+      "properties": {
+        "furniture": {
+          "$ref": "#/definitions/pbFurniture"
+        }
+      }
+    },
+    "pbUpdateFurnitureResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbFurnitureData"
+        }
+      }
+    },
+    "pbUpdateImageRequest": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/pbImage"
+        }
+      }
+    },
+    "pbUpdateImageResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbImageData"
+        }
+      }
+    },
+    "pbUpdateInvestorRequest": {
+      "type": "object",
+      "properties": {
+        "investor": {
+          "$ref": "#/definitions/pbInvestor"
+        }
+      }
+    },
+    "pbUpdateInvestorResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbInvestorData"
+        }
+      }
+    },
+    "pbUpdateProjectRequest": {
+      "type": "object",
+      "properties": {
+        "project_input": {
+          "$ref": "#/definitions/pbProjectInput"
+        }
+      }
+    },
+    "pbUpdateProjectResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbProjectData"
+        }
+      }
+    },
+    "pbUpdatePropertyRequest": {
+      "type": "object",
+      "properties": {
+        "property_input": {
+          "$ref": "#/definitions/pbPropertyInput"
+        }
+      }
+    },
+    "pbUpdatePropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertyData"
+        }
+      }
+    },
+    "pbUpdateStatusOfPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "property_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "pbUpdateStatusOfPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertyData"
+        }
+      }
+    },
+    "pbUpdateTypeOfPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "type_of_property": {
+          "$ref": "#/definitions/pbTypeOfProperty"
+        }
+      }
+    },
+    "pbUpdateTypeOfPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbTypeOfPropertyData"
+        }
+      }
+    },
+    "pbUpdateUtilityRequest": {
+      "type": "object",
+      "properties": {
+        "utility": {
+          "$ref": "#/definitions/pbUtility"
+        }
+      }
+    },
+    "pbUpdateUtilityResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUtilityData"
+        }
+      }
+    },
+    "pbUpdateWardRequest": {
+      "type": "object",
+      "properties": {
+        "ward_input": {
+          "$ref": "#/definitions/pbWardInput"
+        }
+      }
+    },
+    "pbUpdateWardResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbWardData"
+        }
+      }
+    },
+    "pbUtilitiesData": {
+      "type": "object",
+      "properties": {
+        "utilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbUtility"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbUtility": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbUtilityFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbUtilityStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbUtilityData": {
+      "type": "object",
+      "properties": {
+        "utility": {
+          "$ref": "#/definitions/pbUtility"
+        }
+      }
+    },
+    "pbUtilityFeature": {
+      "type": "string",
+      "enum": [
+        "utility_feature_off",
+        "utility_feature_on"
+      ],
+      "default": "utility_feature_off",
+      "description": "`utility_feature` only has two options: on or off",
+      "title": "utility_feature"
+    },
+    "pbUtilityInput": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbUtilityFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbUtilityStatus"
+        }
+      }
+    },
+    "pbUtilityStatus": {
+      "type": "string",
+      "enum": [
+        "utility_status_disable",
+        "utility_status_enable"
+      ],
+      "default": "utility_status_disable",
+      "description": "`utility_status` only has two options: enable or disable",
+      "title": "utility_status"
+    },
+    "pbVersionResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "pbWard": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbWardFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbWardStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbWardData": {
+      "type": "object",
+      "properties": {
+        "ward": {
+          "$ref": "#/definitions/pbWard"
+        }
+      }
+    },
+    "pbWardFeature": {
+      "type": "string",
+      "enum": [
+        "ward_feature_off",
+        "ward_feature_on"
+      ],
+      "default": "ward_feature_off",
+      "description": "`ward_feature` only has two options: on or off",
+      "title": "ward_feature"
+    },
+    "pbWardInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbWardFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbWardStatus"
+        }
+      }
+    },
+    "pbWardStatus": {
+      "type": "string",
+      "enum": [
+        "ward_status_disable",
+        "ward_status_enable"
+      ],
+      "default": "ward_status_disable",
+      "description": "`ward_status` only has two options: enable or disable",
+      "title": "ward_status"
+    },
+    "pbWardsData": {
+      "type": "object",
+      "properties": {
+        "wards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbWard"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
       }
     }
+  },
+  "securityDefinitions": {
+    "BasicAuth": {
+      "type": "apiKey",
+      "name": "Authorizations",
+      "in": "header"
+    }
   }
-  
+}
