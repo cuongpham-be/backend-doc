@@ -2994,8 +2994,143 @@
     "pbCreatePropertyRequest": {
       "type": "object",
       "properties": {
-        "property_input": {
-          "$ref": "#/definitions/pbPropertyInput"
+        "title": {
+          "type": "string"
+        },
+        "brief": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "price_is_contact": {
+          "type": "string",
+          "format": "int64"
+        },
+        "down_payment": {
+          "type": "number",
+          "format": "double"
+        },
+        "contract_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payment_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "time_begin_for_rent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_rooms": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_baths": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_floors": {
+          "type": "string",
+          "format": "int64"
+        },
+        "utilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "furnitures": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "contact_phone": {
+          "type": "string"
+        },
+        "contact_message": {
+          "type": "string"
+        },
+        "feature": {
+          "type": "string",
+          "format": "int64"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "is_visible": {
+          "type": "string",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "project_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -3102,9 +3237,6 @@
     "pbDeleteImageDetailOfPropertyRequest": {
       "type": "object",
       "properties": {
-        "property_id": {
-          "type": "string"
-        },
         "image_detail_id": {
           "type": "string",
           "format": "int64"
@@ -4641,13 +4773,146 @@
     "pbUpdatePropertyRequest": {
       "type": "object",
       "properties": {
-        "property_id": {
+        "title": {
           "type": "string"
         },
-        "property_input": {
-          "$ref": "#/definitions/pbPropertyInput"
+        "brief": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "price_is_contact": {
+          "type": "string",
+          "format": "int64"
+        },
+        "down_payment": {
+          "type": "number",
+          "format": "double"
+        },
+        "contract_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payment_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "time_begin_for_rent": {
+          "type": "string",
+          "format": "int64"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "acreage": {
+          "type": "number",
+          "format": "double"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "number_of_rooms": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_baths": {
+          "type": "string",
+          "format": "int64"
+        },
+        "number_of_floors": {
+          "type": "string",
+          "format": "int64"
+        },
+        "utilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "furnitures": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "contact_phone": {
+          "type": "string"
+        },
+        "contact_message": {
+          "type": "string"
+        },
+        "feature": {
+          "type": "string",
+          "format": "int64"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "is_visible": {
+          "type": "string",
+          "format": "int64"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "project_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
         }
       }
+
     },
     "pbUpdatePropertyResponse": {
       "type": "object",
@@ -4663,9 +4928,6 @@
     "pbUpdateStatusOfPropertyRequest": {
       "type": "object",
       "properties": {
-        "property_id": {
-          "type": "string"
-        },
         "status": {
           "type": "string"
         }
@@ -4728,9 +4990,6 @@
     "pbUpdateVisibleOfPropertyRequest": {
       "type": "object",
       "properties": {
-        "property_id": {
-          "type": "string"
-        },
         "status": {
           "type": "string",
           "format": "int64"
