@@ -1,0 +1,208 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Upload Service",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/uploads": {
+      "post": {
+        "summary": "Uploads a file",
+        "operationId": "Upload Image",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreateImageResponse"
+            }
+          }
+        },
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "name": "file",
+            "type": "file",
+            "in": "formData",
+            "required": true
+          },
+          {
+            "name": "image_id",
+            "type": "integer",
+            "in": "query",
+            "required": false
+          }
+        ],
+        "tags": [
+          "BeHomeUpload"
+        ]
+      }
+    }
+
+  },
+  "definitions": {
+    "uploadVersionResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "pbCreateImageRequest": {
+      "type": "object",
+      "properties": {
+        "image_input": {
+          "$ref": "#/definitions/pbImageInput"
+        }
+      }
+    },
+    "pbCreateImageResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbImageData"
+        }
+      }
+    },
+    "pbImage": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "object": {
+          "type": "string"
+        },
+        "object_id": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImageDetail"
+          }
+        }
+      },
+      "title": "Image"
+    },
+    "pbImageData": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/pbImage"
+        }
+      }
+    },
+    "pbImageDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "size": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "pbImageDetailInput": {
+      "type": "object",
+      "properties": {
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "size": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "pbImageInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImageDetailInput"
+          }
+        }
+      }
+    },
+    "pbImagesData": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbImage"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbMetaData": {
+      "type": "object",
+      "properties": {
+        "flag": {
+          "type": "string",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "beHome API Service",
+    "title": "Backend Service",
     "version": "1.0.0"
   },
-  "host": "gw.veep.tech",
-  "basePath": "/behome-api/v1",
   "schemes": [
     "http",
     "https"
@@ -17,378 +15,6 @@
     "application/json"
   ],
   "paths": {
-    "/admin-portal/login": {
-      "post": {
-        "operationId": "AdminLogin",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbCredentialsLogin"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/health": {
-      "get": {
-        "operationId": "Liveness",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbLivenessResponse"
-            }
-          }
-        },
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/ready": {
-      "get": {
-        "operationId": "Readiness",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbReadinessResponse"
-            }
-          }
-        },
-        "tags": [
-          "BeHomeAuth"
-        ]
-      },
-      "post": {
-        "operationId": "ToggleReadiness",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbToggleReadinessResponse"
-            }
-          }
-        },
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/change_password": {
-      "put": {
-        "operationId": "ChangePassword",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbChangePasswordResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbChangePasswordRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/confirm_otp": {
-      "post": {
-        "operationId": "OtpConfirm",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbOtpConfirmResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbOtpConfirmRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/forgot_password": {
-      "post": {
-        "operationId": "ResetPassword",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbResetPasswordRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/login": {
-      "post": {
-        "operationId": "UserLogin",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbCredentialsLogin"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/logout": {
-      "delete": {
-        "operationId": "Logout",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbLogoutResponse"
-            }
-          }
-        },
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/me": {
-      "get": {
-        "summary": "Get user profile",
-        "operationId": "Me",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/refresh_token": {
-      "post": {
-        "operationId": "RefreshToken",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbTokenPair"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbRefreshTokenRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/register": {
-      "post": {
-        "operationId": "Register",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbSignupForm"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/request_otp": {
-      "post": {
-        "operationId": "SendOtp",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbSendOTPResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbSendOTPRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/social_auth": {
-      "post": {
-        "operationId": "SocialAuth",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbSocialAuthRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/profile/{id}": {
-      "put": {
-        "operationId": "UpdateProfile",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbUserUpdateResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "format": "int64"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUserUpdateRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
-    "/user/verify_username": {
-      "post": {
-        "operationId": "VerifyUsername",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/pbVerifyUsernameResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbVerifyUsernameRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
-    },
     "/cities": {
       "get": {
         "operationId": "GetCities",
@@ -438,7 +64,7 @@
             }
           },
           {
-            "name": "country_id",
+            "name": "CountryID",
             "in": "query",
             "required": false,
             "type": "string",
@@ -461,38 +87,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "city_feature_off",
-              "city_feature_on"
-            ],
-            "default": "city_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "city_status_disable",
-              "city_status_enable"
-            ],
-            "default": "city_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteCity",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteCityResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -521,30 +125,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateCity",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateCityResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateCityRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/cities/{city_id}": {
@@ -565,6 +145,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteCityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateCity",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "city_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCityRequest"
+            }
           }
         ],
         "tags": [
@@ -637,38 +271,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "country_feature_off",
-              "country_feature_on"
-            ],
-            "default": "country_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "country_status_disable",
-              "country_status_enable"
-            ],
-            "default": "country_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteCountry",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteCountryResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -697,30 +309,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateCountry",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateCountryResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateCountryRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/countries/{country_id}": {
@@ -741,6 +329,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteCountryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "country_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateCountry",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCountryResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "country_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateCountryRequest"
+            }
           }
         ],
         "tags": [
@@ -797,7 +439,7 @@
             }
           },
           {
-            "name": "city_id",
+            "name": "CityID",
             "in": "query",
             "required": false,
             "type": "string",
@@ -820,38 +462,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "district_feature_off",
-              "district_feature_on"
-            ],
-            "default": "district_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "district_status_disable",
-              "district_status_enable"
-            ],
-            "default": "district_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteDistrict",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteDistrictResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -880,30 +500,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateDistrict",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateDistrictResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateDistrictRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/districts/{district_id}": {
@@ -924,6 +520,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteDistrictResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "district_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateDistrict",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateDistrictResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "district_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateDistrictRequest"
+            }
           }
         ],
         "tags": [
@@ -996,38 +646,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "furniture_feature_off",
-              "furniture_feature_on"
-            ],
-            "default": "furniture_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "furniture_status_disable",
-              "furniture_status_enable"
-            ],
-            "default": "furniture_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteFurniture",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteFurnitureResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -1056,30 +684,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateFurniture",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateFurnitureResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateFurnitureRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/furnitures/{furniture_id}": {
@@ -1100,6 +704,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteFurnitureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "furniture_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateFurniture",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateFurnitureResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "furniture_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateFurnitureRequest"
+            }
           }
         ],
         "tags": [
@@ -1172,20 +830,6 @@
           "BehomeBackend"
         ]
       },
-      "delete": {
-        "operationId": "DeleteImage",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteImageResponse"
-            }
-          }
-        },
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
       "post": {
         "summary": "service: Image",
         "operationId": "CreateImage",
@@ -1204,30 +848,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/pbCreateImageRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "put": {
-        "operationId": "UpdateImage",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateImageResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateImageRequest"
             }
           }
         ],
@@ -1254,6 +874,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateImage",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateImageResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "image_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateImageRequest"
+            }
           }
         ],
         "tags": [
@@ -1320,38 +994,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "investor_feature_off",
-              "investor_feature_on"
-            ],
-            "default": "investor_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "investor_status_disable",
-              "investor_status_enable"
-            ],
-            "default": "investor_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteInvestor",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteInvestorResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -1380,30 +1032,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateInvestor",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateInvestorResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateInvestorRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/investors/{investor_id}": {
@@ -1423,6 +1051,58 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteInvestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "investor_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateInvestor",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateInvestorResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "investor_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateInvestorRequest"
+            }
           }
         ],
         "tags": [
@@ -1473,22 +1153,14 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "project_feature_off",
-              "project_feature_on"
-            ],
-            "default": "project_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "project_status_disable",
-              "project_status_enable"
-            ],
-            "default": "project_status_disable"
+            "format": "int64"
           },
           {
             "name": "fields",
@@ -1552,67 +1224,53 @@
             "format": "int64"
           },
           {
-            "name": "user_id",
+            "name": "UserID",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "investor_id",
+            "name": "InvestorID",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "type_of_property_id",
+            "name": "TypeOfPropertyID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "city_id",
+            "name": "CityID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "district_id",
+            "name": "DistrictID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "ward_id",
+            "name": "WardID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "image_id",
+            "name": "ImageID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteProject",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteProjectResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -1635,30 +1293,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/pbCreateProjectRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "put": {
-        "operationId": "UpdateProject",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateProjectResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateProjectRequest"
             }
           }
         ],
@@ -1690,6 +1324,60 @@
         "tags": [
           "BehomeBackend"
         ]
+      },
+      "delete": {
+        "operationId": "DeleteProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProject",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateProjectResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateProjectRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
       }
     },
     "/properties": {
@@ -1700,6 +1388,355 @@
             "description": "",
             "schema": {
               "$ref": "#/definitions/pbGetPropertiesResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "fields",
+            "description": "string status = 6;.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relations",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "transaction_type",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "price_is_contact",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "down_payment",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "contract_due",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payment_due",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "time_begin_for_rent",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "acreage",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "number_of_rooms",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "number_of_baths",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "number_of_floors",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "is_visible",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "UserID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "InvestorID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "TypeOfPropertyID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ProjectID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "CountryID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "CityID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "DistrictID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "WardID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "ImageID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Property",
+        "operationId": "CreateProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbCreatePropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreatePropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/properties/{property_id}": {
+      "get": {
+        "operationId": "GetProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeletePropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdatePropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdatePropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/properties_of_user": {
+      "get": {
+        "operationId": "GetPropertiesOfUser",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbGetPropertiesOfUserResponse"
             }
           }
         },
@@ -1784,6 +1821,40 @@
             "format": "double"
           },
           {
+            "name": "price_is_contact",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "down_payment",
+            "in": "query",
+            "required": false,
+            "type": "number",
+            "format": "double"
+          },
+          {
+            "name": "contract_due",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "payment_due",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "time_begin_for_rent",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "direction",
             "in": "query",
             "required": false,
@@ -1838,128 +1909,72 @@
             "format": "int64"
           },
           {
-            "name": "user_id",
+            "name": "is_visible",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "UserID",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "investor_id",
+            "name": "InvestorID",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
-            "name": "type_of_property_id",
+            "name": "TypeOfPropertyID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "project_id",
+            "name": "ProjectID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "country_id",
+            "name": "CountryID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "city_id",
+            "name": "CityID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "district_id",
+            "name": "DistrictID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "ward_id",
+            "name": "WardID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "image_id",
+            "name": "ImageID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteProperty",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeletePropertyResponse"
-            }
-          }
-        },
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "post": {
-        "summary": "service: Property",
-        "operationId": "CreateProperty",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbCreatePropertyResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbCreatePropertyRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "put": {
-        "operationId": "UpdateProperty",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdatePropertyResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdatePropertyRequest"
-            }
           }
         ],
         "tags": [
@@ -1967,14 +1982,14 @@
         ]
       }
     },
-    "/properties/{property_id}": {
-      "get": {
-        "operationId": "GetProperty",
+    "/property_image_detail/{property_id}": {
+      "put": {
+        "operationId": "DeleteImageDetailOfProperty",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbGetPropertyResponse"
+              "$ref": "#/definitions/pbCommonResponse"
             }
           }
         },
@@ -1984,6 +1999,14 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbDeleteImageDetailOfPropertyRequest"
+            }
           }
         ],
         "tags": [
@@ -1991,7 +2014,7 @@
         ]
       }
     },
-    "/property_status": {
+    "/property_status/{property_id}": {
       "put": {
         "operationId": "UpdateStatusOfProperty",
         "responses": {
@@ -2004,11 +2027,49 @@
         },
         "parameters": [
           {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
               "$ref": "#/definitions/pbUpdateStatusOfPropertyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
+    "/property_visible/{property_id}": {
+      "put": {
+        "operationId": "UpdateVisibleOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateVisibleOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "property_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateVisibleOfPropertyRequest"
             }
           }
         ],
@@ -2082,38 +2143,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "type_of_property_feature_off",
-              "type_of_property_feature_on"
-            ],
-            "default": "type_of_property_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "type_of_property_status_disable",
-              "type_of_property_status_enable"
-            ],
-            "default": "type_of_property_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteTypeOfProperty",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteTypeOfPropertyResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -2142,30 +2181,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateTypeOfProperty",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateTypeOfPropertyResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateTypeOfPropertyRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/type_of_properties/{type_of_property_id}": {
@@ -2186,6 +2201,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteTypeOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type_of_property_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateTypeOfProperty",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateTypeOfPropertyResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type_of_property_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateTypeOfPropertyRequest"
+            }
           }
         ],
         "tags": [
@@ -2258,38 +2327,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "utility_feature_off",
-              "utility_feature_on"
-            ],
-            "default": "utility_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "utility_status_disable",
-              "utility_status_enable"
-            ],
-            "default": "utility_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteUtility",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteUtilityResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -2318,30 +2365,6 @@
         "tags": [
           "BehomeBackend"
         ]
-      },
-      "put": {
-        "operationId": "UpdateUtility",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateUtilityResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateUtilityRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
       }
     },
     "/utilities/{utility_id}": {
@@ -2362,6 +2385,60 @@
             "required": true,
             "type": "string",
             "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteUtilityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "utility_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateUtility",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUtilityResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "utility_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateUtilityRequest"
+            }
           }
         ],
         "tags": [
@@ -2434,14 +2511,14 @@
             }
           },
           {
-            "name": "city_id",
+            "name": "CityID",
             "in": "query",
             "required": false,
             "type": "string",
             "format": "int64"
           },
           {
-            "name": "district_id",
+            "name": "DistrictID",
             "in": "query",
             "required": false,
             "type": "string",
@@ -2464,38 +2541,16 @@
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "ward_feature_off",
-              "ward_feature_on"
-            ],
-            "default": "ward_feature_off"
+            "format": "int64"
           },
           {
             "name": "status",
             "in": "query",
             "required": false,
             "type": "string",
-            "enum": [
-              "ward_status_disable",
-              "ward_status_enable"
-            ],
-            "default": "ward_status_disable"
+            "format": "int64"
           }
         ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "delete": {
-        "operationId": "DeleteWard",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbDeleteWardResponse"
-            }
-          }
-        },
         "tags": [
           "BehomeBackend"
         ]
@@ -2518,30 +2573,6 @@
             "required": true,
             "schema": {
               "$ref": "#/definitions/pbCreateWardRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BehomeBackend"
-        ]
-      },
-      "put": {
-        "operationId": "UpdateWard",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbUpdateWardResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbUpdateWardRequest"
             }
           }
         ],
@@ -2573,536 +2604,64 @@
         "tags": [
           "BehomeBackend"
         ]
+      },
+      "delete": {
+        "operationId": "DeleteWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteWardResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ward_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateWard",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateWardResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ward_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateWardRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
       }
     }
   },
   "definitions": {
-    "pbApiMetaData": {
-      "type": "object",
-      "properties": {
-        "flag": {
-          "type": "string",
-          "format": "int64"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "title": "ApiMetaData"
-    },
-    "pbAuthProvider": {
-      "type": "string",
-      "enum": [
-        "facebook",
-        "google"
-      ],
-      "default": "facebook"
-    },
-    "pbChangePasswordRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "$ref": "#/definitions/pbInputType"
-        },
-        "current_password": {
-          "type": "string"
-        },
-        "new_password": {
-          "type": "string"
-        }
-      },
-      "title": "ChangePasswordRequest"
-    },
-    "pbChangePasswordResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbSuccessResponse"
-        }
-      }
-    },
-    "pbCredentialsLogin": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "$ref": "#/definitions/pbInputType"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "title": "CredentialsLogin"
-    },
-    "pbExist": {
-      "type": "object",
-      "properties": {
-        "exist": {
-          "type": "boolean",
-          "format": "boolean"
-        }
-      }
-    },
-    "pbInputType": {
-      "type": "string",
-      "enum": [
-        "phone",
-        "email"
-      ],
-      "default": "phone",
-      "description": "`input_type` only has two options: phone or email",
-      "title": "input_type"
-    },
-    "pbLivenessResponse": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        },
-        "url": {
-          "type": "string"
-        }
-      },
-      "title": "LivenessResponse"
-    },
-    "pbOTPConfiguration": {
-      "type": "object",
-      "properties": {
-        "limit_sms": {
-          "type": "string",
-          "format": "int64"
-        },
-        "limit_call": {
-          "type": "string",
-          "format": "int64"
-        },
-        "count_down_sms": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
-        },
-        "count_down_call": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
-        }
-      },
-      "title": "OTPConfiguration"
-    },
-    "pbLogoutResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbSuccessResponse"
-        }
-      }
-    },
-    "pbOtpConfirmRequest": {
-      "type": "object",
-      "properties": {
-        "phone": {
-          "type": "string"
-        },
-        "otp": {
-          "type": "string"
-        }
-      },
-      "title": "OtpConfirmRequest"
-    },
-    "pbOtpConfirmResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbSuccessResponse"
-        }
-      },
-      "title": "OtpConfirmResponse"
-    },
-    "pbReadinessResponse": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        }
-      },
-      "title": "ReadinessResponse"
-    },
-    "pbResetPasswordRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "$ref": "#/definitions/pbInputType"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "title": "ResetPasswordRequest"
-    },
-    "pbSendOTPData": {
-      "type": "object",
-      "properties": {
-        "total_sent_otp": {
-          "type": "string",
-          "format": "int64"
-        },
-        "otp_configuration": {
-          "$ref": "#/definitions/pbOTPConfiguration"
-        }
-      },
-      "title": "SendOTPData"
-    },
-    "pbSendOTPRequest": {
-      "type": "object",
-      "properties": {
-        "phone_no": {
-          "type": "string",
-          "description": "`phone_no` is user's phone number",
-          "title": "phone_no"
-        },
-        "country_code": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/pbType"
-        }
-      },
-      "title": "SendOTPRequest"
-    },
-    "pbSendOTPResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbSendOTPData"
-        }
-      },
-      "title": "SendOTPResponse"
-    },
-    "pbSignupForm": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "$ref": "#/definitions/pbInputType"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "title": "SignupForm"
-    },
-    "pbSocialAccount": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "int64"
-        },
-        "provider": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        },
-        "profile_url": {
-          "type": "string"
-        }
-      },
-      "title": "SocialUser"
-    },
-    "pbSocialAuthRequest": {
-      "type": "object",
-      "properties": {
-        "access_token": {
-          "type": "string"
-        },
-        "auth_provider": {
-          "$ref": "#/definitions/pbAuthProvider"
-        }
-      },
-      "title": "SocialAuth"
-    },
-    "pbSuccessResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean"
-        }
-      }
-    },
-    "pbToggleReadinessResponse": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string"
-        }
-      },
-      "title": "ToggleReadinessResponse"
-    },
-    "pbTokenPair": {
-      "type": "object",
-      "properties": {
-        "access_token": {
-          "type": "string"
-        },
-        "refresh_token": {
-          "type": "string"
-        }
-      },
-      "title": "TokenPair"
-    },
-    "pbType": {
-      "type": "string",
-      "enum": [
-        "sms",
-        "call"
-      ],
-      "default": "sms",
-      "description": "`type` is kind of opt request type, just only two options: sms or call",
-      "title": "type"
-    },
-    "pbUser": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "format": "int64"
-        },
-        "name": {
-          "type": "string"
-        },
-        "first_name": {
-          "type": "string"
-        },
-        "last_name": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "identity_no": {
-          "type": "string"
-        },
-        "age": {
-          "type": "string"
-        },
-        "address": {
-          "type": "string"
-        },
-        "apartment": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "province_code": {
-          "type": "string"
-        },
-        "country": {
-          "type": "string"
-        },
-        "country_code": {
-          "type": "string"
-        },
-        "avatar": {
-          "type": "string"
-        },
-        "created_at": {
-          "type": "string"
-        },
-        "updated_at": {
-          "type": "string"
-        },
-        "enabled": {
-          "type": "boolean",
-          "format": "boolean"
-        },
-        "device_token": {
-          "type": "string"
-        },
-        "social_account": {
-          "$ref": "#/definitions/pbSocialAccount"
-        }
-      },
-      "title": "User"
-    },
-    "pbUserApiResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbUserData"
-        }
-      },
-      "title": "UserApiResponse"
-    },
-    "pbUserData": {
-      "type": "object",
-      "properties": {
-        "access_token": {
-          "type": "string"
-        },
-        "refresh_token": {
-          "type": "string"
-        },
-        "user": {
-          "$ref": "#/definitions/pbUser"
-        }
-      },
-      "title": "UserData"
-    },
-    "pbVerifyUsernameRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string",
-          "description": "`username` of user",
-          "title": "username"
-        },
-        "input_type": {
-          "$ref": "#/definitions/pbInputType"
-        }
-      },
-      "title": "VerifyUsernameRequest"
-    },
-    "pbVerifyUsernameResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbExist",
-          "description": "if user is existing on database =\u003e  exist = true",
-          "title": "exist"
-        }
-      },
-      "title": "VerifyUsernameResponse"
-    },
-    "pbUserUpdateRequest": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "first_name": {
-          "type": "string"
-        },
-        "last_name": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "identity_no": {
-          "type": "string"
-        },
-        "age": {
-          "type": "string",
-          "format": "int64"
-        },
-        "address": {
-          "type": "string"
-        },
-        "apartment": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "province_code": {
-          "type": "string"
-        },
-        "country": {
-          "type": "string"
-        },
-        "country_code": {
-          "type": "string"
-        },
-        "avatar": {
-          "type": "string"
-        },
-        "device_token": {
-          "type": "string"
-        },
-        "gender": {
-          "type": "string",
-          "format": "int64",
-          "enum": [
-            -1,
-            0,
-            1
-          ]
-        }
-      }
-    },
-    "pbUserUpdateResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbApiMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbUserUpdateData"
-        }
-      }
-    },
-    "pbUserUpdateData": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/pbUser"
-        }
-      }
-    },
-    "pbRefreshTokenRequest": {
-      "type": "object",
-      "properties": {
-        "refresh_token": {
-          "type": "string",
-          "title": "refresh_token"
-        }
-      },
-      "title": "RefreshTokenRequest"
-    },
     "pbCitiesData": {
       "type": "object",
       "properties": {
@@ -3200,6 +2759,14 @@
       "default": "city_status_disable",
       "description": "`city_status` only has two options: enable or disable",
       "title": "city_status"
+    },
+    "pbCommonResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbCountriesData": {
       "type": "object",
@@ -3501,7 +3068,12 @@
       }
     },
     "pbDeleteCityResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteCountryResponse": {
       "type": "object",
@@ -3512,10 +3084,32 @@
       }
     },
     "pbDeleteDistrictResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteFurnitureResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
+    "pbDeleteImageDetailOfPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "property_id": {
+          "type": "string"
+        },
+        "image_detail_id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
     },
     "pbDeleteImageResponse": {
       "type": "object",
@@ -3526,22 +3120,52 @@
       }
     },
     "pbDeleteInvestorResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteProjectResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeletePropertyResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteTypeOfPropertyResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteUtilityResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDeleteWardResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
     },
     "pbDistrict": {
       "type": "object",
@@ -3885,6 +3509,17 @@
         }
       }
     },
+    "pbGetPropertiesOfUserResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbPropertiesData"
+        }
+      }
+    },
     "pbGetPropertiesResponse": {
       "type": "object",
       "properties": {
@@ -4055,6 +3690,10 @@
     "pbImageInput": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
         "title": {
           "type": "string"
         },
@@ -4098,6 +3737,14 @@
         },
         "status": {
           "$ref": "#/definitions/pbInvestorStatus"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64"
         }
       },
       "title": "Investor"
@@ -4123,6 +3770,9 @@
     "pbInvestorInput": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string"
+        },
         "name": {
           "type": "string"
         },
@@ -4212,6 +3862,14 @@
         },
         "status": {
           "$ref": "#/definitions/pbProjectStatus"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64"
         },
         "user_id": {
           "type": "string"
@@ -4411,6 +4069,26 @@
           "type": "number",
           "format": "double"
         },
+        "price_is_contact": {
+          "type": "string",
+          "format": "int64"
+        },
+        "down_payment": {
+          "type": "number",
+          "format": "double"
+        },
+        "contract_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payment_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "time_begin_for_rent": {
+          "type": "string",
+          "format": "int64"
+        },
         "direction": {
           "type": "string"
         },
@@ -4440,6 +4118,15 @@
         "number_of_floors": {
           "type": "string",
           "format": "int64"
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "contact_phone": {
+          "type": "string"
+        },
+        "contact_message": {
+          "type": "string"
         },
         "user_id": {
           "type": "string"
@@ -4486,9 +4173,36 @@
         "status": {
           "type": "string"
         },
+        "is_visible": {
+          "type": "string",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "transaction_type_display": {
+          "type": "string"
+        },
+        "direction_display": {
+          "type": "string"
+        },
+        "price_display": {
+          "type": "string"
+        },
+        "status_display": {
+          "type": "string"
+        },
+        "acreage_display": {
+          "type": "string"
+        },
         "investor": {
           "$ref": "#/definitions/pbInvestor",
-          "title": "User user = 40;"
+          "title": "User user = 60;"
         },
         "type_of_property": {
           "$ref": "#/definitions/pbTypeOfProperty"
@@ -4556,6 +4270,26 @@
           "type": "number",
           "format": "double"
         },
+        "price_is_contact": {
+          "type": "string",
+          "format": "int64"
+        },
+        "down_payment": {
+          "type": "number",
+          "format": "double"
+        },
+        "contract_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "payment_due": {
+          "type": "string",
+          "format": "int64"
+        },
+        "time_begin_for_rent": {
+          "type": "string",
+          "format": "int64"
+        },
         "direction": {
           "type": "string"
         },
@@ -4600,6 +4334,30 @@
             "format": "int64"
           }
         },
+        "contact_name": {
+          "type": "string"
+        },
+        "contact_phone": {
+          "type": "string"
+        },
+        "contact_message": {
+          "type": "string"
+        },
+        "feature": {
+          "type": "string",
+          "format": "int64"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "type": "string"
+        },
+        "is_visible": {
+          "type": "string",
+          "format": "int64"
+        },
         "user_id": {
           "type": "string"
         },
@@ -4633,17 +4391,6 @@
         "image_id": {
           "type": "string",
           "format": "int64"
-        },
-        "feature": {
-          "type": "string",
-          "format": "int64"
-        },
-        "order": {
-          "type": "string",
-          "format": "int64"
-        },
-        "status": {
-          "type": "string"
         }
       }
     },
@@ -4734,6 +4481,10 @@
     "pbUpdateCityRequest": {
       "type": "object",
       "properties": {
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "city": {
           "$ref": "#/definitions/pbCity"
         }
@@ -4753,6 +4504,10 @@
     "pbUpdateCountryRequest": {
       "type": "object",
       "properties": {
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "country": {
           "$ref": "#/definitions/pbCountry"
         }
@@ -4772,6 +4527,10 @@
     "pbUpdateDistrictRequest": {
       "type": "object",
       "properties": {
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "district": {
           "$ref": "#/definitions/pbDistrict"
         }
@@ -4791,6 +4550,10 @@
     "pbUpdateFurnitureRequest": {
       "type": "object",
       "properties": {
+        "furniture_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "furniture": {
           "$ref": "#/definitions/pbFurniture"
         }
@@ -4810,6 +4573,10 @@
     "pbUpdateImageRequest": {
       "type": "object",
       "properties": {
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "image": {
           "$ref": "#/definitions/pbImage"
         }
@@ -4829,8 +4596,11 @@
     "pbUpdateInvestorRequest": {
       "type": "object",
       "properties": {
-        "investor": {
-          "$ref": "#/definitions/pbInvestor"
+        "investor_id": {
+          "type": "string"
+        },
+        "investor_input": {
+          "$ref": "#/definitions/pbInvestorInput"
         }
       }
     },
@@ -4848,6 +4618,10 @@
     "pbUpdateProjectRequest": {
       "type": "object",
       "properties": {
+        "project_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "project_input": {
           "$ref": "#/definitions/pbProjectInput"
         }
@@ -4867,6 +4641,9 @@
     "pbUpdatePropertyRequest": {
       "type": "object",
       "properties": {
+        "property_id": {
+          "type": "string"
+        },
         "property_input": {
           "$ref": "#/definitions/pbPropertyInput"
         }
@@ -4899,15 +4676,16 @@
       "properties": {
         "meta": {
           "$ref": "#/definitions/pbMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbPropertyData"
         }
       }
     },
     "pbUpdateTypeOfPropertyRequest": {
       "type": "object",
       "properties": {
+        "type_of_property_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "type_of_property": {
           "$ref": "#/definitions/pbTypeOfProperty"
         }
@@ -4927,6 +4705,10 @@
     "pbUpdateUtilityRequest": {
       "type": "object",
       "properties": {
+        "utility_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "utility": {
           "$ref": "#/definitions/pbUtility"
         }
@@ -4943,9 +4725,33 @@
         }
       }
     },
+    "pbUpdateVisibleOfPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "property_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "pbUpdateVisibleOfPropertyResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
     "pbUpdateWardRequest": {
       "type": "object",
       "properties": {
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
         "ward_input": {
           "$ref": "#/definitions/pbWardInput"
         }
@@ -5169,13 +4975,6 @@
           "format": "int64"
         }
       }
-    }
-  },
-  "securityDefinitions": {
-    "BasicAuth": {
-      "type": "apiKey",
-      "name": "Authorizations",
-      "in": "header"
     }
   }
 }
