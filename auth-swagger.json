@@ -43,7 +43,6 @@
     },
     "/health": {
       "get": {
-        "summary": "rpc Version (VersionRequest) returns (VersionResponse) {option (google.api.http) = {get: \"/version\", }; }",
         "operationId": "Liveness",
         "responses": {
           "200": {
@@ -114,6 +113,84 @@
         ]
       }
     },
+    "/user/check_email_exist": {
+      "post": {
+        "operationId": "CheckEmailExist",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbExistResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCheckEmailExistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/check_phone_exist": {
+      "post": {
+        "operationId": "CheckPhoneExist",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbExistResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCheckPhoneExistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
+    "/user/check_username_exist": {
+      "post": {
+        "operationId": "CheckUsernameExist",
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/pbExistResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCheckUsernameExistRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BeHomeAuth"
+        ]
+      }
+    },
     "/user/confirm_otp": {
       "post": {
         "operationId": "OtpConfirm",
@@ -168,13 +245,12 @@
     },
     "/user/login": {
       "post": {
-        "summary": "rpc Login (LoginRequest) returns (LoginResponse) {option (google.api.http) = { post: \"/user/login\", body: \"*\" }; }",
         "operationId": "Login",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
+              "$ref": "#/definitions/pbLoginResponse"
             }
           }
         },
@@ -184,7 +260,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/pbCredentialsLogin"
+              "$ref": "#/definitions/pbLoginRequest"
             }
           }
         ],
@@ -200,7 +276,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbLogoutResponse"
+              "$ref": "#/definitions/pbCommonResponse"
             }
           }
         },
@@ -211,7 +287,6 @@
     },
     "/user/me": {
       "get": {
-        "summary": "Get user profile",
         "operationId": "Me",
         "responses": {
           "200": {
@@ -260,13 +335,12 @@
     },
     "/user/refresh_token": {
       "post": {
-        "summary": "rpc RefreshToken (RefreshTokenRequest) returns (LoginResponse) { option (google.api.http) = { post: \"/user/refresh_token\" };  }",
         "operationId": "RefreshToken",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbTokenPair"
+              "$ref": "#/definitions/pbLoginResponse"
             }
           }
         },
@@ -277,13 +351,12 @@
     },
     "/user/register": {
       "post": {
-        "summary": "rpc Register (SignupForm) returns (LoginResponse) { option (google.api.http) = { post: \"/user/register\", body: \"*\" };  }",
         "operationId": "Register",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
+              "$ref": "#/definitions/pbLoginResponse"
             }
           }
         },
@@ -293,7 +366,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/pbSignupForm"
+              "$ref": "#/definitions/pbRegisterRequest"
             }
           }
         ],
@@ -304,7 +377,6 @@
     },
     "/user/request_otp": {
       "post": {
-        "summary": "User",
         "operationId": "OtpRequest",
         "responses": {
           "200": {
@@ -354,45 +426,9 @@
           "BeHomeAuth"
         ]
       }
-    },
-    "/user/verify_username": {
-      "post": {
-        "operationId": "VerifyUsername",
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/pbVerifyUsernameResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/pbVerifyUsernameRequest"
-            }
-          }
-        ],
-        "tags": [
-          "BeHomeAuth"
-        ]
-      }
     }
   },
   "definitions": {
-    "authpbType": {
-      "type": "string",
-      "enum": [
-        "sms",
-        "call"
-      ],
-      "default": "sms",
-      "description": "`type` is kind of opt request type, just only two options: sms or call",
-      "title": "type"
-    },
     "pbAuthProvider": {
       "type": "string",
       "enum": [
@@ -430,6 +466,41 @@
         }
       }
     },
+    "pbCheckEmailExistRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "title": "CheckPhoneExistRequest"
+    },
+    "pbCheckPhoneExistRequest": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        }
+      },
+      "title": "CheckPhoneExistRequest"
+    },
+    "pbCheckUsernameExistRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        }
+      },
+      "title": "CheckUsernameExistRequest"
+    },
+    "pbCommonResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
     "pbCredentialsLogin": {
       "type": "object",
       "properties": {
@@ -454,6 +525,17 @@
         }
       }
     },
+    "pbExistResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbExist"
+        }
+      }
+    },
     "pbLivenessResponse": {
       "type": "object",
       "properties": {
@@ -466,14 +548,40 @@
       },
       "title": "LivenessResponse"
     },
-    "pbLogoutResponse": {
+    "pbLoginData": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/pbToken"
+        },
+        "user": {
+          "$ref": "#/definitions/pbUser"
+        }
+      }
+    },
+    "pbLoginRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "input_type": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "title": "Login"
+    },
+    "pbLoginResponse": {
       "type": "object",
       "properties": {
         "meta": {
           "$ref": "#/definitions/pbMetaData"
         },
         "data": {
-          "$ref": "#/definitions/pbSuccessResponse"
+          "$ref": "#/definitions/pbLoginData"
         }
       }
     },
@@ -493,27 +601,13 @@
     "pbOTPConfiguration": {
       "type": "object",
       "properties": {
-        "limit_sms": {
+        "quota_sms": {
           "type": "string",
           "format": "int64"
         },
-        "limit_call": {
+        "quota_call": {
           "type": "string",
           "format": "int64"
-        },
-        "count_down_sms": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
-        },
-        "count_down_call": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "format": "int64"
-          }
         }
       },
       "title": "OTPConfiguration"
@@ -559,6 +653,24 @@
       },
       "title": "ReadinessResponse"
     },
+    "pbRegisterRequest": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "input_type": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        }
+      },
+      "title": "RegisterRequest"
+    },
     "pbResetPasswordRequest": {
       "type": "object",
       "properties": {
@@ -595,14 +707,10 @@
       "type": "object",
       "properties": {
         "phone_no": {
-          "type": "string",
-          "title": "`phone_no` is user's phone number"
-        },
-        "country_code": {
           "type": "string"
         },
         "type": {
-          "$ref": "#/definitions/authpbType"
+          "type": "string"
         }
       },
       "title": "SendOTPRequest"
@@ -618,24 +726,6 @@
         }
       },
       "title": "SendOTPResponse"
-    },
-    "pbSignupForm": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        },
-        "input_type": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        }
-      },
-      "title": "SignupForm"
     },
     "pbSocialAuthRequest": {
       "type": "object",
@@ -667,17 +757,29 @@
       },
       "title": "ToggleReadinessResponse"
     },
-    "pbTokenPair": {
+    "pbToken": {
       "type": "object",
       "properties": {
         "access_token": {
-          "type": "string"
+          "type": "string",
+          "title": "@required JWT, usually expires after 15 minutes"
         },
         "refresh_token": {
-          "type": "string"
+          "type": "string",
+          "title": "@required Refresh token, use to generate new access tokens"
+        },
+        "at_expires_in": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Access token expires in (second)"
+        },
+        "rt_expires_in": {
+          "type": "integer",
+          "format": "int32",
+          "title": "Refresh token expires in (second)"
         }
       },
-      "title": "TokenPair"
+      "title": "Token"
     },
     "pbUser": {
       "type": "object",
@@ -874,30 +976,6 @@
           "$ref": "#/definitions/pbUserUpdateData"
         }
       }
-    },
-    "pbVerifyUsernameRequest": {
-      "type": "object",
-      "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "type": "string"
-        }
-      },
-      "title": "VerifyUsernameRequest"
-    },
-    "pbVerifyUsernameResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbExist"
-        }
-      },
-      "title": "VerifyUsernameResponse"
     }
   }
 }
