@@ -2078,6 +2078,198 @@
         ]
       }
     },
+    "/streets": {
+      "get": {
+        "operationId": "GetStreets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbGetStreetsResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "CityID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "DistrictID",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "prefix",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "feature",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "post": {
+        "summary": "service: Street",
+        "operationId": "CreateStreet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbCreateStreetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbCreateStreetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }      
+    },
+    "/streets/{street_id}": {
+      "get": {
+        "operationId": "GetStreet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbGetStreetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "street_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "put": {
+        "operationId": "UpdateStreet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbUpdateStreetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pbUpdateStreetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      },
+      "delete": {
+        "operationId": "DeleteStreet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/pbDeleteStreetResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "street_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "BehomeBackend"
+        ]
+      }
+    },
     "/type_of_properties": {
       "get": {
         "operationId": "GetTypeOfProperties",
@@ -3142,6 +3334,25 @@
         },
         "data": {
           "$ref": "#/definitions/pbPropertyData"
+        }
+      }
+    },
+    "pbCreateStreetRequest": {
+      "type": "object",
+      "properties": {
+        "street_input": {
+          "$ref": "#/definitions/pbStreetInput"
+        }
+      }
+    },
+    "pbCreateStreetResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbStreetData"
         }
       }
     },
@@ -4526,6 +4737,112 @@
         }
       }
     },
+    "pbStreet": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbStreetFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbStreetStatus"
+        }
+      },
+      "title": "Distric"
+    },
+    "pbStreetData": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "$ref": "#/definitions/pbStreet"
+        }
+      }
+    },
+    "pbStreetFeature": {
+      "type": "string",
+      "enum": [
+        "street_feature_off",
+        "street_feature_on"
+      ],
+      "default": "street_feature_off",
+      "description": "`street_feature` only has two options: on or off",
+      "title": "street_feature"
+    },
+    "pbStreetInput": {
+      "type": "object",
+      "properties": {
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prefix": {
+          "type": "string"
+        },
+        "feature": {
+          "$ref": "#/definitions/pbStreetFeature"
+        },
+        "order": {
+          "type": "string",
+          "format": "int64"
+        },
+        "status": {
+          "$ref": "#/definitions/pbStreetStatus"
+        }
+      }
+    },
+    "pbStreetStatus": {
+      "type": "string",
+      "enum": [
+        "street_status_disable",
+        "street_status_enable"
+      ],
+      "default": "street_status_disable",
+      "description": "`street_status` only has two options: enable or disable",
+      "title": "street_status"
+    },
+    "pbStreetsData": {
+      "type": "object",
+      "properties": {
+        "streets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/pbStreet"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
     "pbTypeOfPropertiesData": {
       "type": "object",
       "properties": {
@@ -4938,6 +5255,25 @@
       "properties": {
         "meta": {
           "$ref": "#/definitions/pbMetaData"
+        }
+      }
+    },
+    "pbUpdateStreetRequest": {
+      "type": "object",
+      "properties": {
+        "street_input": {
+          "$ref": "#/definitions/pbStreetInput"
+        }
+      }
+    },
+    "pbUpdateStreetResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbStreetData"
         }
       }
     },
