@@ -94,7 +94,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbChangePasswordResponse"
+              "$ref": "#/definitions/pbCommonResponse"
             }
           }
         },
@@ -287,12 +287,12 @@
     },
     "/user/me": {
       "get": {
-        "operationId": "Me",
+        "operationId": "GetUserProfile",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbUserApiResponse"
+              "$ref": "#/definitions/pbGetUserResponse"
             }
           }
         },
@@ -301,30 +301,24 @@
         ]
       }
     },
-    "/user/profile/{id}": {
+    "/user/profile": {
       "put": {
         "operationId": "UpdateProfile",
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/pbUserUpdateResponse"
+              "$ref": "#/definitions/pbGetUserResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/pbUserUpdateRequest"
+              "$ref": "#/definitions/pbUpdateProfileRequest"
             }
           }
         ],
@@ -440,12 +434,6 @@
     "pbChangePasswordRequest": {
       "type": "object",
       "properties": {
-        "username": {
-          "type": "string"
-        },
-        "input_type": {
-          "type": "string"
-        },
         "current_password": {
           "type": "string"
         },
@@ -454,17 +442,6 @@
         }
       },
       "title": "ChangePasswordRequest"
-    },
-    "pbChangePasswordResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbSuccessResponse"
-        }
-      }
     },
     "pbCheckEmailExistRequest": {
       "type": "object",
@@ -498,6 +475,9 @@
       "properties": {
         "meta": {
           "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbEmpty"
         }
       }
     },
@@ -516,6 +496,10 @@
       },
       "title": "CredentialsLogin"
     },
+    "pbEmpty": {
+      "type": "object",
+      "title": "Empty"
+    },
     "pbExist": {
       "type": "object",
       "properties": {
@@ -533,6 +517,33 @@
         },
         "data": {
           "$ref": "#/definitions/pbExist"
+        }
+      }
+    },
+    "pbGetUserResponse": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/pbMetaData"
+        },
+        "data": {
+          "$ref": "#/definitions/pbUserData"
+        }
+      }
+    },
+    "pbInternalCheckAccessTokenResponse": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "pbInternalGetUserInfoFromAccessTokenResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/pbUser"
         }
       }
     },
@@ -617,6 +628,14 @@
       "properties": {
         "token": {
           "type": "string"
+        },
+        "total_invalid_otp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "max_invalid_otp": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -706,7 +725,7 @@
     "pbSendOTPRequest": {
       "type": "object",
       "properties": {
-        "phone_no": {
+        "phone": {
           "type": "string"
         },
         "type": {
@@ -738,15 +757,6 @@
         }
       },
       "title": "SocialAuth"
-    },
-    "pbSuccessResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean",
-          "format": "boolean"
-        }
-      }
     },
     "pbToggleReadinessResponse": {
       "type": "object",
@@ -780,6 +790,58 @@
         }
       },
       "title": "Token"
+    },
+    "pbUpdateProfileRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "title": "string phone = 3 ;"
+        },
+        "age": {
+          "type": "string",
+          "format": "int64"
+        },
+        "gender": {
+          "type": "string",
+          "format": "int64"
+        },
+        "identity_no": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "apartment": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "country_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "city_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "district_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ward_id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "image_id": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
     },
     "pbUser": {
       "type": "object",
@@ -870,6 +932,12 @@
         },
         "updated_at": {
           "type": "string"
+        },
+        "phone_country_code": {
+          "type": "string"
+        },
+        "phone_national": {
+          "type": "string"
         }
       },
       "title": "User"
@@ -891,89 +959,6 @@
       "properties": {
         "user": {
           "$ref": "#/definitions/pbUser"
-        },
-        "access_token": {
-          "type": "string"
-        },
-        "refresh_token": {
-          "type": "string"
-        }
-      }
-    },
-    "pbUserUpdateData": {
-      "type": "object",
-      "properties": {
-        "user": {
-          "$ref": "#/definitions/pbUser"
-        }
-      }
-    },
-    "pbUserUpdateRequest": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "first_name": {
-          "type": "string"
-        },
-        "last_name": {
-          "type": "string"
-        },
-        "phone": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "identity_no": {
-          "type": "string"
-        },
-        "age": {
-          "type": "string",
-          "format": "int64"
-        },
-        "address": {
-          "type": "string"
-        },
-        "apartment": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "province_code": {
-          "type": "string"
-        },
-        "country": {
-          "type": "string"
-        },
-        "country_code": {
-          "type": "string"
-        },
-        "avatar": {
-          "type": "string"
-        },
-        "device_token": {
-          "type": "string"
-        },
-        "gender": {
-          "type": "string",
-          "format": "int64"
-        }
-      }
-    },
-    "pbUserUpdateResponse": {
-      "type": "object",
-      "properties": {
-        "meta": {
-          "$ref": "#/definitions/pbMetaData"
-        },
-        "data": {
-          "$ref": "#/definitions/pbUserUpdateData"
         }
       }
     }
